@@ -1,0 +1,3 @@
+[submodule "原始WeIdentity_Contract"]
+	path = 原始WeIdentity_Contract
+	url = git@github.com:WeBankFinTech/weid-contract.git
