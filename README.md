@@ -158,16 +158,16 @@ Crendential 和 ERC721 有类似之处，因此我们可以对发行 Credential 
 
 1. **使用账户1部署合约**
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/183351_183fa9c2_4839312.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/1.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 2. **部署成功**
 
-<img src="https://images.gitee.com/uploads/images/2020/0529/141646_c5f7e556_4839312.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/2.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 
 3. **测试新增 authorityIssuer 函数**
 
-<img src="https://images.gitee.com/uploads/images/2020/0609/201153_fdae7eb7_4839312.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/3.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 其中，address 是新增为 authorityIssuer 的账户地址，attribBytes32 是名字，attribInt 是创建的日期.
 
@@ -175,13 +175,13 @@ Crendential 和 ERC721 有类似之处，因此我们可以对发行 Credential 
 
 transact后，该交易会被放入等待交易队列中，结果返回的交易序号为3。
 
-<img src="https://images.gitee.com/uploads/images/2020/0609/201213_fef29fa3_4839312.png " alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/4.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 5. **测试查询等待队列函数**
 
 由于上述交易逻辑上会被保存进等待队列，因此这里我们去查看一下等待队列中是否真正被放入了该交易：
 
-<img src="https://images.gitee.com/uploads/images/2020/0609/201222_01239ed2_4839312.png " alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/5.png" " alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 查询结果与逻辑无误。
 
@@ -190,13 +190,13 @@ transact后，该交易会被放入等待交易队列中，结果返回的交易
 
 在多签之前，我们需要先为该等待交易设置多签数量，若不设置，则无法进行多签，这里我们为上述等待交易设置多签限制为2。
 
-<img src="https://images.gitee.com/uploads/images/2020/0609/201235_b94b879a_4839312.png " alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/6.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 7. **测试多签函数**
 
 设置完成后，我们使用当前账户（具备权限）对上述交易序号为3的交易进行多签：
 
-<img src="https://images.gitee.com/uploads/images/2020/0609/201251_8584a2cd_4839312.png  " alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/07.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 结果返回签名成功，我们再切换其他具有权限的账户进行签名，这里是否具有权限是通过这段代码进行判断。
 
@@ -205,11 +205,11 @@ if(!roleController.checkPermission(tx.origin,roleController.MODIFY_AUTHORITY_ISS
 return;
 }
 ```
-<img src="https://images.gitee.com/uploads/images/2020/0529/141939_c7cd835e_4839312.png  " alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/7.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 使用第二个有权限的账户签名成功，由于已满足多签要求，因此新增成功：
 
-<img src="https://images.gitee.com/uploads/images/2020/0609/201308_8429a52b_4839312.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/8.png" alt="1" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 ## 5. 限量 CPT 的简介、接口描述与使用示范
 
@@ -323,57 +323,57 @@ return;
 
 1. **部署CredentialController合约**
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/193728_26a0db2b_4839312.png" alt="2" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
+<img src="pics/9.png" alt="2" title="截屏2020-06-06下午7.15.02.png" style="zoom:50%;" />
 
 2. **为某类型cpt设置限量数额**
 
 CPT 限量数额默认为零，也就是说如果 CPT 遵循限量发行流程（自然也可以选择传统流程），该 CPT 无法「发行」Credential，必须在设置后，方可发行。
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/193814_308cacc8_4839312.png" alt="3" title="截屏2020-06-06下午7.21.28.png" style="zoom:50%;" />
+<img src="pics/10.png" alt="3" title="截屏2020-06-06下午7.21.28.png" style="zoom:50%;" />
 
 设置成功
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/193932_f0381cca_4839312.png" alt="4" title="截屏2020-06-06下午7.22.02.png" style="zoom:50%;" />
+<img src="pics/11.png" alt="4" title="截屏2020-06-06下午7.22.02.png" style="zoom:50%;" />
 
 3. **查看某类型cpt限额**
 
 这里我们查询刚刚设置的cptid为1的类型的限额
 
-<img src="https://images.gitee.com/uploads/images/2020/0610/100454_929e4fc1_4839312.png" alt="5" title="截屏2020-06-06下午7.22.15.png" style="zoom:50%;" />
+<img src="pics/12.png" alt="5" title="截屏2020-06-06下午7.22.15.png" style="zoom:50%;" />
 
 结果为我们刚刚设置的限额1，以及当前已发行的credential数量为0
 
-<img src="https://images.gitee.com/uploads/images/2020/0610/100752_3170b164_4839312.png" alt="6" title="截屏2020-06-06下午7.22.29.png" style="zoom:50%;" />
+<img src="pics/13.png" alt="6" title="截屏2020-06-06下午7.22.29.png" style="zoom:50%;" />
 
 4. **生成 Credential Id与随机数**
 
 填写cptid，基于该类型生成一对 credential Id 与随机数
 
-<img src="https://images.gitee.com/uploads/images/2020/0610/135516_086bbb45_4839312.png" alt="8" title="截屏2020-06-06下午7.23.06.png" style="zoom:50%;" />
+<img src="pics/14.png" alt="8" title="截屏2020-06-06下午7.23.06.png" style="zoom:50%;" />
 
 生成成功，得到 credential Id 与随机数，该id与随机数一一匹配，用于后续 Evidence 上链时的合法检验。
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/194653_a92a1cf8_4839312.png" alt="9" title="截屏2020-06-06下午7.23.15.png" style="zoom:50%;" />
+<img src="pics/15.png" alt="9" title="截屏2020-06-06下午7.23.15.png" style="zoom:50%;" />
 
 5. **部署 EvidenceContract 合约**
 
 将此前部署的CredentialController合约地址填入，进行部署
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/194850_24f6ca10_4839312.png" alt="10" title="截屏2020-06-06下午7.24.25.png" style="zoom:50%;" />
+<img src="pics/16.png" alt="10" title="截屏2020-06-06下午7.24.25.png" style="zoom:50%;" />
 
 6. **存证上链**
 
 其中creid为要上链的credential的id号，randNum 为此前发行 credential 时得到的与id号一一配对的随机数。
 
-<img src="https://images.gitee.com/uploads/images/2020/0610/135531_1afe8607_4839312.png" alt="11" title="截屏2020-06-06下午7.24.53.png" style="zoom:50%;" />
+<img src="pics/17.png" alt="11" title="截屏2020-06-06下午7.24.53.png" style="zoom:50%;" />
 
 填写参数，randNum处先随意填一个randNum，由于不配对，因此结果返回为0，上链失败。
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/195537_23aac432_4839312.png" alt="12" title="截屏2020-06-06下午7.30.35.png" style="zoom:50%;" />
+<img src="pics/18.png" alt="12" title="截屏2020-06-06下午7.30.35.png" style="zoom:50%;" />
 
 再填写配对的随机数，进行测试，结果返回为1，上链成功。
 
-<img src="https://images.gitee.com/uploads/images/2020/0606/195629_cbf871f5_4839312.png" alt="13" title="截屏2020-06-06下午7.33.53.png" style="zoom:50%;" />
+<img src="pics/19.png" alt="13" title="截屏2020-06-06下午7.33.53.png" style="zoom:50%;" />
 
 
 
